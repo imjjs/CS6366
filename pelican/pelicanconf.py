@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = u'Yi Li'
 SITENAME = u'CS6366 Project'
 #SITENAME = u'Consensus in Multi-Agent Systems'
-SITEURL = 'https://imjjs.github.io/cs6366/#'
+SITEURL = 'https://imjjs.github.io/cs6366'
 
 PATH = 'content'
 
