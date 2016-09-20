@@ -83,7 +83,7 @@ def cf_upload():
 def publish():
     """Publish to production via rsync"""
     clean()
-    local('make html')
+    build()
     local('cp -r output/* ../docs')
     # project.rsync_project(
     #     remote_dir=dest_path,
