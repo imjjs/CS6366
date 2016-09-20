@@ -82,6 +82,7 @@ def cf_upload():
 @hosts(production)
 def publish():
     """Publish to production via rsync"""
+    clean()
     local('pelican -s publishconf.py')
     local('cp -r output/* ../docs')
     # project.rsync_project(

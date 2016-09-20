@@ -33,5 +33,7 @@ AUTHOR_FEED_RSS = None
 DEFAULT_PAGINATION = False
 
 THEME = 'pelican-themes/aboutwilson'
+PLUGIN_PATHS = ['./pelican-plugins']
+PLUGINS = ['render_math']
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
