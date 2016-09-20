@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = u'Yi Li'
 SITENAME = u'CS6366 Project'
 #SITENAME = u'Consensus in Multi-Agent Systems'
-SITEURL = ''
+SITEURL = 'https://imjjs.github.io/cs6366/#'
 
 PATH = 'content'
 
@@ -36,4 +36,4 @@ THEME = 'pelican-themes/aboutwilson'
 PLUGIN_PATHS = ['./pelican-plugins']
 PLUGINS = ['render_math']
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+#RELATIVE_URLS = True
