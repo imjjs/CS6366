@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Consensus in Multi-Agents System — CS6366 Project</title>
-	<meta name="description" content="Title: Consensus in Multi-Agents System; Date: 2016-09-08; Author: Yi Li">
+	<title> — CS6366 Project</title>
+	<meta name="description" content="Title: ; Date: 2016-09-08; Author: Yi Li">
 	<meta name="author" content="Yi Li">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -26,7 +26,7 @@
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
 	<div class="text-center article-header">
-		<h1 itemprop="name headline" class="article-title">Consensus in Multi-Agents System</h1>
+		<h1 itemprop="name headline" class="article-title"></h1>
 		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 			<h4 itemprop="name">Yi Li</h4>
 		</span>
@@ -45,13 +45,15 @@
 			<a href="https://imjjs.github.io/cs6366/tag/distributed-ai.html" rel="tag">distributed AI</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><div class="section" id="motivation">
-<h2>Motivation</h2>
-<p>Due to broad applications of multi-agent systems in many fields including cooperative control of UAVs, flocking, distributed sensor networks and congestion control in communication networks, distributed coordination of network of dynamic agents have been studied extensively in the literature. In many application related to multi-agent systems, agents groups need to reach consensus, that is to converge to a same value which might or might not be related to the motion of the individual agents. This kind of problems called consensus problems. Although the consensus problem has a long history in the field of computer science, in particular automata theory and distributed computation, it becomes an important issue that need to be addressed in distributed artificial intelligence.</p>
+	<div itemprop="articleBody" class="article-body"><div class="section" id="consensus-in-multi-agents-system">
+<h2>Consensus in Multi-Agents System</h2>
+<div class="section" id="motivation">
+<h3>Motivation</h3>
+<p>Due to broad applications of multi-agent systems in many fields including cooperative control of UAVs, flocking, distributed sensor networks and congestion control in communication networks, distributed coordination of network of dynamic agents have been studied extensively in the literature. In many application related to multi-agent systems, agents groups need to reach consensus, that is to converge to a same value which might or might not be related to the motion of the individual agents. This kind of problems called consensus problems. Although the consensus problem has a long history in the field of computer science, in particular automaton theory and distributed computation, it becomes an important issue that need to be addressed in distributed artificial intelligence.</p>
 </div>
 <div class="section" id="description">
-<h2>Description</h2>
-<p>The project is about studying consensus in multi-agent systems. The core idea is that the consensus problem can be turned into a noncooperative stochastic game, where the dynamic agent are players. The consensus can be formally represented by a mechanism design problem including the objective functions such that if the rational agents use their best-response strategies, then such objective functions lead the whole system to a consensus value. Moreover, we assume that neighbourhood relations are defined in the players set and each player has a optimal, distributed, and stationary control policy making decisions based on its neighbors’ state.</p>
+<h3>Description</h3>
+<p>The project is about studying consensus in multi-agent systems. The core idea is that the consensus problem can be turned into a non-cooperative stochastic game, where the dynamic agent are players. The consensus can be formally represented by a mechanism design problem including the objective functions such that if the rational agents use their best-response strategies, then such objective functions lead the whole system to a consensus value. Moreover, we assume that neighborhood relations are defined in the players set and each player has a optimal, distributed, and stationary control policy making decisions based on its neighbors’ state.</p>
 <dl class="docutils">
 <dt>Several optional topics may be included in this project:</dt>
 <dd><ul class="first last simple">
@@ -63,7 +65,7 @@
 </dl>
 </div>
 <div class="section" id="evaluation">
-<h2>Evaluation</h2>
+<h3>Evaluation</h3>
 <p>I am considering several options (this part might be changed if there is a better idea coming).</p>
 <ul class="simple">
 <li>Optimal power flow problems. Using PyPower creates and simulates a decentralized power grid. The agents includes power generators and consumers and the neighborhood relations can be defined by the topological structure of power grids. The behaviors of whole system can be treated as a MDP. Some properties, like avoiding power overload, can be considered as the consensus. Finally, we measure the tendency of the whole system. (does the agents converge to the consensus with their optimal control policies ?)</li>
@@ -71,7 +73,7 @@
 </ul>
 </div>
 <div class="section" id="schedule">
-<h2>Schedule</h2>
+<h3>Schedule</h3>
 <ul class="simple">
 <li>Sept. 22nd: finish formal definition of the problem model.</li>
 <li>Oct. 11th: define and get the primary solutions of the consensus problem.</li>
@@ -82,11 +84,12 @@
 </ul>
 </div>
 <div class="section" id="reference">
-<h2>Reference</h2>
+<h3>Reference</h3>
 <p>[1] Bauso, Dario, Laura Giarré, and Raffaele Pesenti. &quot;Non-linear protocols for optimal distributed consensus in networks of dynamic agents.&quot; Systems &amp; Control Letters 55.11 (2006): 918-928.</p>
 <p>[2] Ren, Wei, Randal W. Beard, and Ella M. Atkins. &quot;A survey of consensus problems in multi-agent coordination.&quot; Proceedings of the 2005, American Control Conference, 2005.. IEEE, 2005.</p>
 <p>[3]Sarimveis, Haralambos, et al. &quot;Dynamic modeling and control of supply chain systems: A review.&quot; Computers &amp; Operations Research 35.11 (2008): 3530-3561.</p>
 <p>[4] Fred S. Roberts, &quot;Computer science and decision theory&quot;, Annals of Operations Research, 2008.</p>
+</div>
 </div>
 </div>
 	<hr>
