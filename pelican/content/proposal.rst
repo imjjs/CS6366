@@ -16,7 +16,7 @@ Due to broad applications of multi-agent systems in many fields including cooper
 
 Description
 -----------
-The project is about studying consensus in multi-agent systems. The core idea is that the consensus problem can be turned into a non-cooperative stochastic game, where the dynamic agent are players. The consensus can be formally represented by a mechanism design problem including the objective functions such that if the rational agents use their best-response strategies, then such objective functions lead the whole system to a consensus value. Moreover, we assume that neighborhood relations are defined in the players set and each player has a optimal, distributed, and stationary control policy making decisions based on its neighbors’ state.
+The project is about studying consensus in multi-agent systems. The core idea is that the consensus problem can be turned into a non-cooperative stochastic game, where the dynamic agents are players. The consensus can be formally represented by a mechanism design problem including the objective functions such that if the rational agents use their best-response strategies, then such objective functions lead the whole system to a consensus value. Moreover, we assume that neighborhood relations are defined in the players set and each player has a optimal, distributed, and stationary control policy making decisions based on its neighbors’ states.
 
 Several optional topics may be included in this project:
     - Make a comparison between our model and traditional approaches for solving consensus problems.
