@@ -6,7 +6,7 @@ Model
 :category: cs6366
 :slug: dai2
 :authors: Yi Li
-:summary: project proposal
+:summary: basic model
 
 
 Basic
