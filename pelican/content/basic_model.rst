@@ -14,7 +14,7 @@ Basic
 
 - :math:`I = \{1, 2, ..., n\}`  is a collection of dynamic agents.
 
-- :math:`G = (\Gamma, E)` is a time-invariant undirected connected graph describing neighborhood relations on :math:`I`, where :math:`E \subset I \times I` is the edge-set. By undirected we mean that :math:`\forall (i, j) \in E, (j, i) \in E`. The neighborhood of agent :math:`i` is denoted by :math:`N(i) = \{j\in I | (i,j) \in E\}`.
+- :math:`G = (I, E)` is a time-invariant undirected connected graph describing neighborhood relations on :math:`I`, where :math:`E \subset I \times I` is the edge-set. By undirected we mean that :math:`\forall (i, j) \in E, (j, i) \in E`. The neighborhood of agent :math:`i` is denoted by :math:`N(i) = \{j\in I | (i,j) \in E\}`.
 
 - :math:`S` is the state space and :math:`s^{(i)}_t \in S_i` denotes the state of agent :math:`i` at time :math:`t`, while :math:`\hat{s}_t \in S \subset \times_i S_i` is the state vector for all agents at time :math:`t`.
 
@@ -24,6 +24,14 @@ Basic
 
 - A distributed and stationary control policy of i-th is denoted by a infinite sequence of control function, :math:`u^{(i)}_0u^{(i)}_1...u^{(i)}_t...`, where  :math:`u_t^{(i)}: S \rightarrow A_i`. By distributed we mean the agent makes decisions according the states of its neighbors ( :math:`u^{(i)}_t(\hat{s}) = u^{(i)}_t(\hat{s}')` if :math:`\forall j \in N(i)` and :math:`s^{(j)} = s'^{(j)}`).
 
+
+Consensus
+---------
+- A consensus value is denoted by :math:`\mathcal{X}: S \rightarrow R`, which is permutation invariant: :math:`\mathcal{X}(s_1,s_2,...,s_n) = \mathcal{X}(s_{\sigma(1)}, s_{\sigma(2)},...,s_{\sigma(n)})`, where :math:`\sigma: I \rightarrow I`.
+
+-  Agents reach asymptotically consensus on a consensus value if :math:`|| \hat{s}_t - \mathcal{X}(\hat{s_0})\cdot \hat{1}|| \rightarrow 0` for :math:`t \rightarrow \infty`.
+
+- The comsensus problem: For a group of dynamic agents with neighborhood relations according to :math:`G(I,E)`. For any agreement function :math:`\mathcal{X}`, find a distributed and stationary protocol making agents reach asymptotically consensus on :math:`\mathcal{X(\hat{s}_0)}` for any initial state :math:`\hat{s}_0`.
 
 Reachability
 ------------
@@ -36,14 +44,8 @@ Reachability
 
 - One can shows a set of path under policy :math:`u` satisfying a LTL formula :math:`\phi` is measurable [1]_. We can define :math:`P_{path}[\{ r^u_i \in Path^u_i | r \vDash \phi \}]` as the probability of satisfying :math:`\phi` for player :math:`i` under policy :math:`u`.
 
+- One can easily create an agreement function :math:`\mathcal{X}` based on the definition of :math:`P_{path}`, which means consensus values can be described by LTL logic.
 
-Problem
----------------
-Two ideas (assume there is an object function evaluating the system performance):
-
-- For a certain threshold :math:`\theta`, :math:`P_{path} > \theta` forms a region. The problem can be turned into a optimization problem with bounded constraints.
-
-- Turn the problem into a multiple object programming by add :math:`max:  P_{path}` into the target set.
 
 .. [1] C. Baier, J.-P. Katoen, and K. G. Larsen, Principles of Model Checking. MIT Press, 2008.
 .. [2] Ding, Xuchu Dennis, et al. "Optimal Control of Markov Decision Processes with Temporal Logic Constraints."

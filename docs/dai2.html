@@ -49,11 +49,19 @@
 <h2>Basic</h2>
 <ul class="simple">
 <li><span class="math">\(I = \{1, 2, ..., n\}\)</span>  is a collection of dynamic agents.</li>
-<li><span class="math">\(G = (\Gamma, E)\)</span> is a time-invariant undirected connected graph describing neighborhood relations on <span class="math">\(I\)</span>, where <span class="math">\(E \subset I \times I\)</span> is the edge-set. By undirected we mean that <span class="math">\(\forall (i, j) \in E, (j, i) \in E\)</span>. The neighborhood of agent <span class="math">\(i\)</span> is denoted by <span class="math">\(N(i) = \{j\in I | (i,j) \in E\}\)</span>.</li>
+<li><span class="math">\(G = (I, E)\)</span> is a time-invariant undirected connected graph describing neighborhood relations on <span class="math">\(I\)</span>, where <span class="math">\(E \subset I \times I\)</span> is the edge-set. By undirected we mean that <span class="math">\(\forall (i, j) \in E, (j, i) \in E\)</span>. The neighborhood of agent <span class="math">\(i\)</span> is denoted by <span class="math">\(N(i) = \{j\in I | (i,j) \in E\}\)</span>.</li>
 <li><span class="math">\(S\)</span> is the state space and <span class="math">\(s^{(i)}_t \in S_i\)</span> denotes the state of agent <span class="math">\(i\)</span> at time <span class="math">\(t\)</span>, while <span class="math">\(\hat{s}_t \in S \subset \times_i S_i\)</span> is the state vector for all agents at time <span class="math">\(t\)</span>.</li>
 <li><span class="math">\(\mathcal{M} = (\Gamma, S, \hat{s}_0, A, P, g)\)</span> is a stochastic game, where <span class="math">\(A_i\)</span> is the action set of player <span class="math">\(i\)</span> and <span class="math">\(A = \times_i A_i\)</span>; <span class="math">\(P\)</span> is a transition probability from <span class="math">\(S \times A\)</span> to <span class="math">\(S\)</span>; A payoff function <span class="math">\(g: S \times A \rightarrow \mathbb{R}^I\)</span> whose i-th coordinate, <span class="math">\(g^{(i)}\)</span>, is a function of the state <span class="math">\(s^{(i)} \in S_i\)</span> and the action profile <span class="math">\(a^{(i)} \in A_i\)</span>.</li>
 <li>A play of stochastic game, <span class="math">\(\hat{s}_0 \hat{a}_0...\hat{s}_t\hat{a}_t...\)</span>, generates a sequence of payoff <span class="math">\(\hat{g}_0\hat{g}_1,...\hat{g}_t...\)</span>, where <span class="math">\(\hat{g}_t = g(\hat{s}_t, \hat{a}_t)\)</span>.</li>
 <li>A distributed and stationary control policy of i-th is denoted by a infinite sequence of control function, <span class="math">\(u^{(i)}_0u^{(i)}_1...u^{(i)}_t...\)</span>, where  <span class="math">\(u_t^{(i)}: S \rightarrow A_i\)</span>. By distributed we mean the agent makes decisions according the states of its neighbors ( <span class="math">\(u^{(i)}_t(\hat{s}) = u^{(i)}_t(\hat{s}')\)</span> if <span class="math">\(\forall j \in N(i)\)</span> and <span class="math">\(s^{(j)} = s'^{(j)}\)</span>).</li>
+</ul>
+</div>
+<div class="section" id="consensus">
+<h2>Consensus</h2>
+<ul class="simple">
+<li>A consensus value is denoted by <span class="math">\(\mathcal{X}: S \rightarrow R\)</span>, which is permutation invariant: <span class="math">\(\mathcal{X}(s_1,s_2,...,s_n) = \mathcal{X}(s_{\sigma(1)}, s_{\sigma(2)},...,s_{\sigma(n)})\)</span>, where <span class="math">\(\sigma: I \rightarrow I\)</span>.</li>
+<li>Agents reach asymptotically consensus on a consensus value if <span class="math">\(|| \hat{s}_t - \mathcal{X}(\hat{s_0})\cdot \hat{1}|| \rightarrow 0\)</span> for <span class="math">\(t \rightarrow \infty\)</span>.</li>
+<li>The comsensus problem: For a group of dynamic agents with neighborhood relations according to <span class="math">\(G(I,E)\)</span>. For any agreement function <span class="math">\(\mathcal{X}\)</span>, find a distributed and stationary protocol making agents reach asymptotically consensus on <span class="math">\(\mathcal{X(\hat{s}_0)}\)</span> for any initial state <span class="math">\(\hat{s}_0\)</span>.</li>
 </ul>
 </div>
 <div class="section" id="reachability">
@@ -63,14 +71,7 @@
 <li>A collection of paths of i-th player under a control policy <span class="math">\(u\)</span> is denoted by <span class="math">\(Path^u_i = \{s_0^{(i)}s_1^{(i)}...s_t^{(i)}...| \forall t, P[s_{t+1}^{(i)}| s_t^{(i)}, a_t^{(i)} = u_t^{(i)}(\hat{s}_t)] &gt; 0\}\)</span>.</li>
 <li>Obviously, <span class="math">\(Path\)</span> is a <span class="math">\(\sigma\)</span> algebra and we can define another probability measure <span class="math">\(P_{path}\)</span> on it. For example, the probability measure of a set of paths <span class="math">\(r^u\)</span> under policy <span class="math">\(u\)</span> having common prefix <span class="math">\(s_0^{(i)}s_1^{(i)}...s_t^{(i)}\)</span> can be defined as <span class="math">\(P_{path}(r^u) = \prod\limits_{i=1}^{t} P[s_{t+1}^{(i)}| s_t^{(i)}, u_t^{(i)}(\hat{s}_t)]\)</span> <a class="footnote-reference" href="#id4" id="id1">[2]</a>.</li>
 <li>One can shows a set of path under policy <span class="math">\(u\)</span> satisfying a LTL formula <span class="math">\(\phi\)</span> is measurable <a class="footnote-reference" href="#id3" id="id2">[1]</a>. We can define <span class="math">\(P_{path}[\{ r^u_i \in Path^u_i | r \vDash \phi \}]\)</span> as the probability of satisfying <span class="math">\(\phi\)</span> for player <span class="math">\(i\)</span> under policy <span class="math">\(u\)</span>.</li>
-</ul>
-</div>
-<div class="section" id="problem">
-<h2>Problem</h2>
-<p>Two ideas (assume there is an object function evaluating the system performance):</p>
-<ul class="simple">
-<li>For a certain threshold <span class="math">\(\theta\)</span>, <span class="math">\(P_{path} &gt; \theta\)</span> forms a region. The problem can be turned into a optimization problem with bounded constraints.</li>
-<li>Turn the problem into a multiple object programming by add <span class="math">\(max:  P_{path}\)</span> into the target set.</li>
+<li>One can easily create an agreement function <span class="math">\(\mathcal{X}\)</span> based on the definition of <span class="math">\(P_{path}\)</span>, which means consensus values can be described by LTL logic.</li>
 </ul>
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
