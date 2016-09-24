@@ -6,7 +6,7 @@ Consensus in Multi-Agent System
 :category: cs6366
 :slug: dai1
 :authors: Yi Li
-:summary: project proposal
+:summary: deliverable document 1
 
 
 
@@ -38,7 +38,7 @@ Schedule
 - Oct. 27th: refine the solutions of the consensus problem and solve the mechanism design.
 - Nov. 15th: implement the experiments.
 - Nov. 29th: deliver the project.
-- Project Website: https://my.vanderbilt.edu/liyi/homepage/distributed-ai-project/
+- Project Website: https://imjjs.github.io/cs6366/
 
 Reference
 ---------
