@@ -8,6 +8,8 @@ Deliverable 3
 :authors: Yi Li
 :summary: deliverable 3
 
+**Document can be download from https://imjjs.github.io/cs6366/d3.pdf**
+**I pledge my honor that I have neither given nor received aid on this work.**
 
 Progress
 --------------------------------
@@ -18,9 +20,9 @@ Refinement for the generic model
 
 Let's introduce a generic cost function for i-th agent: :math:`J_i(x_i, N(x_i), a_i) = \lim\limits_{T \rightarrow \infty} \sum \limits_{i=0}^T F(x_i, N(x_i), a_i)`, where :math:`F` is a nonnegative penalty function accounting for the deviation of player i from its neighbors.
 
-We say that a protocol is optimal, if each control :math:`u_i` minimizes :math:`J_i`. Recall we have the definition of consensus problem in deliverable 2. We say that a protocol is a consensus protocol if it is solution of the consensus problem. Furthermore, a consensus protocol is said to be optimal, if the controls :math:`a_i` minimize :math:`J_i`.
+We say that a protocol is optimal, if each control :math:`a_i` minimizes :math:`J_i`. Recall we have the definition of consensus problem in deliverable 2. We say that a protocol is a consensus protocol if it is solution of the consensus problem. Furthermore, a consensus protocol is said to be optimal, if the controls :math:`a_i` minimize :math:`J_i`.
 
-Thus, the mechanism design problem can be defined as: For any agreement function :math:`\mathcal{X}` design a penalty function :math:`F` such that there exists an optimal consensus protocol :math:`a` with respect to :math:`\mathcal{X(\hat{s}_0)}` for any initial state :math:`\hat{s}(0)`.
+Thus, the mechanism design problem can be defined as: For any agreement function :math:`\mathcal{X}` design a penalty function :math:`F` such that there exists an optimal consensus protocol :math:`a` with respect to :math:`\mathcal{X}(\hat{s}_0)` for any initial state :math:`\hat{s}(0)`.
 
 
 Application: Target tracking with distributed sensors
@@ -62,11 +64,9 @@ For each probe in the tracking problem,
 - It believes that it moves around in the euclidean plane.
 
 (b)
-
 The knowledge of movement and the states of neighborhood is included in the framework of games. The knowledge of observations is integrated into the cost function. The neighborhood relations are defined by the distance on the euclidean plane. The uncertainty in the knowledge of movement makes the game model be a stochastic game.
 
 (c)
-
 The uncertainty is represented by the random variable with Gaussian distribution. It works for the model, although it usually is a strong assumption in the real world.
 
 Since the knowledge of states of probes is a kinematics issues, it can be represented by the Cartesian coordinate system and classic Newton's laws. Such representation works under the assumptions of the application model, but may not work in the real world. For example, tracking a target over the surface of ocean is not a system on the euclidean plane, and finding the trace of a high-energy particle in LHC is not a system under classic Newton's laws.

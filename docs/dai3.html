@@ -45,14 +45,16 @@
 			<a href="https://imjjs.github.io/cs6366/tag/distributed-ai.html" rel="tag">distributed AI</a>
 		</span>
 	</div>
-	<div itemprop="articleBody" class="article-body"><div class="section" id="progress">
+	<div itemprop="articleBody" class="article-body"><p><strong>Document can be download from https://imjjs.github.io/cs6366/d3.pdf</strong>
+<strong>I pledge my honor that I have neither given nor received aid on this work.</strong></p>
+<div class="section" id="progress">
 <h2>Progress</h2>
 <p>In deliverable 2, the basic model for generic consensus problems has been defined. In this time, I defined the mechanism design problem and narrow down the model by considering a specific application.</p>
 <div class="section" id="refinement-for-the-generic-model">
 <h3>Refinement for the generic model</h3>
 <p>Let's introduce a generic cost function for i-th agent: <span class="math">\(J_i(x_i, N(x_i), a_i) = \lim\limits_{T \rightarrow \infty} \sum \limits_{i=0}^T F(x_i, N(x_i), a_i)\)</span>, where <span class="math">\(F\)</span> is a nonnegative penalty function accounting for the deviation of player i from its neighbors.</p>
-<p>We say that a protocol is optimal, if each control <span class="math">\(u_i\)</span> minimizes <span class="math">\(J_i\)</span>. Recall we have the definition of consensus problem in deliverable 2. We say that a protocol is a consensus protocol if it is solution of the consensus problem. Furthermore, a consensus protocol is said to be optimal, if the controls <span class="math">\(a_i\)</span> minimize <span class="math">\(J_i\)</span>.</p>
-<p>Thus, the mechanism design problem can be defined as: For any agreement function <span class="math">\(\mathcal{X}\)</span> design a penalty function <span class="math">\(F\)</span> such that there exists an optimal consensus protocol <span class="math">\(a\)</span> with respect to <span class="math">\(\mathcal{X(\hat{s}_0)}\)</span> for any initial state <span class="math">\(\hat{s}(0)\)</span>.</p>
+<p>We say that a protocol is optimal, if each control <span class="math">\(a_i\)</span> minimizes <span class="math">\(J_i\)</span>. Recall we have the definition of consensus problem in deliverable 2. We say that a protocol is a consensus protocol if it is solution of the consensus problem. Furthermore, a consensus protocol is said to be optimal, if the controls <span class="math">\(a_i\)</span> minimize <span class="math">\(J_i\)</span>.</p>
+<p>Thus, the mechanism design problem can be defined as: For any agreement function <span class="math">\(\mathcal{X}\)</span> design a penalty function <span class="math">\(F\)</span> such that there exists an optimal consensus protocol <span class="math">\(a\)</span> with respect to <span class="math">\(\mathcal{X}(\hat{s}_0)\)</span> for any initial state <span class="math">\(\hat{s}(0)\)</span>.</p>
 </div>
 <div class="section" id="application-target-tracking-with-distributed-sensors">
 <h3>Application: Target tracking with distributed sensors</h3>
@@ -92,14 +94,10 @@ For each probe in the tracking problem,</p>
 <li>It believes that the observations from its neighbors are inaccurate.</li>
 <li>It believes that it moves around in the euclidean plane.</li>
 </ul>
-<ol class="loweralpha simple" start="2">
-<li></li>
-</ol>
-<p>The knowledge of movement and the states of neighborhood is included in the framework of games. The knowledge of observations is integrated into the cost function. The neighborhood relations are defined by the distance on the euclidean plane. The uncertainty in the knowledge of movement makes the game model be a stochastic game.</p>
-<ol class="loweralpha simple" start="3">
-<li></li>
-</ol>
-<p>The uncertainty is represented by the random variable with Gaussian distribution. It works for the model, although it usually is a strong assumption in the real world.</p>
+<p>(b)
+The knowledge of movement and the states of neighborhood is included in the framework of games. The knowledge of observations is integrated into the cost function. The neighborhood relations are defined by the distance on the euclidean plane. The uncertainty in the knowledge of movement makes the game model be a stochastic game.</p>
+<p>(c)
+The uncertainty is represented by the random variable with Gaussian distribution. It works for the model, although it usually is a strong assumption in the real world.</p>
 <p>Since the knowledge of states of probes is a kinematics issues, it can be represented by the Cartesian coordinate system and classic Newton's laws. Such representation works under the assumptions of the application model, but may not work in the real world. For example, tracking a target over the surface of ocean is not a system on the euclidean plane, and finding the trace of a high-energy particle in LHC is not a system under classic Newton's laws.</p>
 </div>
 <div class="section" id="reference">
