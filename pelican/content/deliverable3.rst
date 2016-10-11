@@ -8,7 +8,8 @@ Deliverable 3
 :authors: Yi Li
 :summary: deliverable 3
 
-**Document can be download from https://imjjs.github.io/cs6366/d3.pdf**
+**Document can be download from** https://imjjs.github.io/cs6366/d3.pdf
+
 **I pledge my honor that I have neither given nor received aid on this work.**
 
 Progress
