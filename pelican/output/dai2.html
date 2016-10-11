@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Deliverable 2 — CS6366 Project</title>
+	<meta name="description" content="Title: Deliverable 2; Date: 2016-09-21; Author: Yi Li">
+	<meta name="author" content="Yi Li">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="https://imjjs.github.io/cs6366/theme/html5.js"></script>
+		<![endif]-->
+	<link href="https://imjjs.github.io/cs6366/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="https://imjjs.github.io/cs6366/theme/css/local.css" rel="stylesheet">
+	<link href="https://imjjs.github.io/cs6366/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="https://imjjs.github.io/cs6366/">CS6366 Project</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Deliverable 2</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">Yi Li</h4>
+		</span>
+		<time datetime="2016-09-21T06:20:00-05:00" itemprop="datePublished">Wed 21 September 2016</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="https://imjjs.github.io/cs6366/category/cs6366.html" rel="category">cs6366</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="https://imjjs.github.io/cs6366/tag/distributed-ai.html" rel="tag">distributed AI</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><div class="section" id="basic">
+<h2>Basic</h2>
+<ul class="simple">
+<li><span class="math">\(I = \{1, 2, ..., n\}\)</span>  is a collection of dynamic agents.</li>
+<li><span class="math">\(G = (I, E)\)</span> is a time-invariant undirected connected graph describing neighborhood relations on <span class="math">\(I\)</span>, where <span class="math">\(E \subset I \times I\)</span> is the edge-set. By undirected we mean that <span class="math">\(\forall (i, j) \in E, (j, i) \in E\)</span>. The neighborhood of agent <span class="math">\(i\)</span> is denoted by <span class="math">\(N(i) = \{j\in I | (i,j) \in E\}\)</span>.</li>
+<li><span class="math">\(S\)</span> is the state space and <span class="math">\(s^{(i)}_t \in S_i\)</span> denotes the state of agent <span class="math">\(i\)</span> at time <span class="math">\(t\)</span>, while <span class="math">\(\hat{s}_t \in S \subset \times_i S_i\)</span> is the state vector for all agents at time <span class="math">\(t\)</span>.</li>
+<li><span class="math">\(\mathcal{M} = (\Gamma, S, \hat{s}_0, A, P, g)\)</span> is a stochastic game, where <span class="math">\(A_i\)</span> is the action set of player <span class="math">\(i\)</span> and <span class="math">\(A = \times_i A_i\)</span>; <span class="math">\(P\)</span> is a transition probability from <span class="math">\(S \times A\)</span> to <span class="math">\(S\)</span>; A payoff function <span class="math">\(g: S \times A \rightarrow \mathbb{R}^I\)</span> whose i-th coordinate, <span class="math">\(g^{(i)}\)</span>, is a function of the state <span class="math">\(s^{(i)} \in S_i\)</span> and the action profile <span class="math">\(a^{(i)} \in A_i\)</span>.</li>
+<li>A play of stochastic game, <span class="math">\(\hat{s}_0 \hat{a}_0...\hat{s}_t\hat{a}_t...\)</span>, generates a sequence of payoff <span class="math">\(\hat{g}_0\hat{g}_1,...\hat{g}_t...\)</span>, where <span class="math">\(\hat{g}_t = g(\hat{s}_t, \hat{a}_t)\)</span>.</li>
+<li>A distributed and stationary control policy of i-th is denoted by a infinite sequence of control function, <span class="math">\(u^{(i)}_0u^{(i)}_1...u^{(i)}_t...\)</span>, where  <span class="math">\(u_t^{(i)}: S \rightarrow A_i\)</span>. By distributed we mean the agent makes decisions according the states of its neighbors ( <span class="math">\(u^{(i)}_t(\hat{s}) = u^{(i)}_t(\hat{s}')\)</span> if <span class="math">\(\forall j \in N(i)\)</span> and <span class="math">\(s^{(j)} = s'^{(j)}\)</span>).</li>
+</ul>
+</div>
+<div class="section" id="consensus">
+<h2>Consensus</h2>
+<ul class="simple">
+<li>A consensus value is denoted by <span class="math">\(\mathcal{X}: S \rightarrow R\)</span>, which is permutation invariant: <span class="math">\(\mathcal{X}(s_1,s_2,...,s_n) = \mathcal{X}(s_{\sigma(1)}, s_{\sigma(2)},...,s_{\sigma(n)})\)</span>, where <span class="math">\(\sigma: I \rightarrow I\)</span>.</li>
+<li>Agents reach asymptotically consensus on a consensus value if <span class="math">\(|| \hat{s}_t - \mathcal{X}(\hat{s_0})\cdot \hat{1}|| \rightarrow 0\)</span> for <span class="math">\(t \rightarrow \infty\)</span>.</li>
+<li>The comsensus problem: For a group of dynamic agents with neighborhood relations according to <span class="math">\(G(I,E)\)</span>. For any agreement function <span class="math">\(\mathcal{X}\)</span>, find a distributed and stationary protocol making agents reach asymptotically consensus on <span class="math">\(\mathcal{X(\hat{s}_0)}\)</span> for any initial state <span class="math">\(\hat{s}_0\)</span>.</li>
+</ul>
+</div>
+<div class="section" id="reachability">
+<h2>Reachability</h2>
+<ul class="simple">
+<li>A path of i-th agent is a sequence of states denoted by, <span class="math">\(s_0^{(i)}s_1^{(i)}...s_t^{(i)}\)</span>, which can be generated under a control policy  by applying <span class="math">\(u^{(i)}_t(\hat{s}_t)\)</span> at state <span class="math">\(\hat{s}_t\)</span>.</li>
+<li>A collection of paths of i-th player under a control policy <span class="math">\(u\)</span> is denoted by <span class="math">\(Path^u_i = \{s_0^{(i)}s_1^{(i)}...s_t^{(i)}...| \forall t, P[s_{t+1}^{(i)}| s_t^{(i)}, a_t^{(i)} = u_t^{(i)}(\hat{s}_t)] &gt; 0\}\)</span>.</li>
+<li>Obviously, <span class="math">\(Path\)</span> is a <span class="math">\(\sigma\)</span> algebra and we can define another probability measure <span class="math">\(P_{path}\)</span> on it. For example, the probability measure of a set of paths <span class="math">\(r^u\)</span> under policy <span class="math">\(u\)</span> having common prefix <span class="math">\(s_0^{(i)}s_1^{(i)}...s_t^{(i)}\)</span> can be defined as <span class="math">\(P_{path}(r^u) = \prod\limits_{i=1}^{t} P[s_{t+1}^{(i)}| s_t^{(i)}, u_t^{(i)}(\hat{s}_t)]\)</span> <a class="footnote-reference" href="#id4" id="id1">[2]</a>.</li>
+<li>One can shows a set of path under policy <span class="math">\(u\)</span> satisfying a LTL formula <span class="math">\(\phi\)</span> is measurable <a class="footnote-reference" href="#id3" id="id2">[1]</a>. We can define <span class="math">\(P_{path}[\{ r^u_i \in Path^u_i | r \vDash \phi \}]\)</span> as the probability of satisfying <span class="math">\(\phi\)</span> for player <span class="math">\(i\)</span> under policy <span class="math">\(u\)</span>.</li>
+<li>One can easily create an agreement function <span class="math">\(\mathcal{X}\)</span> based on the definition of <span class="math">\(P_{path}\)</span>, which means consensus values can be described by LTL logic.</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><ol class="first last upperalpha simple" start="3">
+<li>Baier, J.-P. Katoen, and K. G. Larsen, Principles of Model Checking. MIT Press, 2008.</li>
+</ol>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[2]</a></td><td>Ding, Xuchu Dennis, et al. &quot;Optimal Control of Markov Decision Processes with Temporal Logic Constraints.&quot;</td></tr>
+</tbody>
+</table>
+</div>
+<script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://imjjs.github.io/cs6366">CS6366 Project</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://imjjs.github.io/cs6366/category/cs6366.html">cs6366 (3)</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Yi Li 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

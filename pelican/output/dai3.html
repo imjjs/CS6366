@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Deliverable 3 — CS6366 Project</title>
+	<meta name="description" content="Title: Deliverable 3; Date: 2016-10-11; Author: Yi Li">
+	<meta name="author" content="Yi Li">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="https://imjjs.github.io/cs6366/theme/html5.js"></script>
+		<![endif]-->
+	<link href="https://imjjs.github.io/cs6366/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="https://imjjs.github.io/cs6366/theme/css/local.css" rel="stylesheet">
+	<link href="https://imjjs.github.io/cs6366/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="https://imjjs.github.io/cs6366/">CS6366 Project</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Deliverable 3</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">Yi Li</h4>
+		</span>
+		<time datetime="2016-10-11T06:20:00-05:00" itemprop="datePublished">Tue 11 October 2016</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="https://imjjs.github.io/cs6366/category/cs6366.html" rel="category">cs6366</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="https://imjjs.github.io/cs6366/tag/distributed-ai.html" rel="tag">distributed AI</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><div class="section" id="progress">
+<h2>Progress</h2>
+<p>In deliverable 2, the basic model for generic consensus problems has been defined. In this time, I defined the mechanism design problem and narrow down the model by considering a specific application.</p>
+<div class="section" id="refinement-for-the-generic-model">
+<h3>Refinement for the generic model</h3>
+<p>Let's introduce a generic cost function for i-th agent: <span class="math">\(J_i(x_i, N(x_i), a_i) = \lim\limits_{T \rightarrow \infty} \sum \limits_{i=0}^T F(x_i, N(x_i), a_i)\)</span>, where <span class="math">\(F\)</span> is a nonnegative penalty function accounting for the deviation of player i from its neighbors.</p>
+<p>We say that a protocol is optimal, if each control <span class="math">\(u_i\)</span> minimizes <span class="math">\(J_i\)</span>. Recall we have the definition of consensus problem in deliverable 2. We say that a protocol is a consensus protocol if it is solution of the consensus problem. Furthermore, a consensus protocol is said to be optimal, if the controls <span class="math">\(a_i\)</span> minimize <span class="math">\(J_i\)</span>.</p>
+<p>Thus, the mechanism design problem can be defined as: For any agreement function <span class="math">\(\mathcal{X}\)</span> design a penalty function <span class="math">\(F\)</span> such that there exists an optimal consensus protocol <span class="math">\(a\)</span> with respect to <span class="math">\(\mathcal{X(\hat{s}_0)}\)</span> for any initial state <span class="math">\(\hat{s}(0)\)</span>.</p>
+</div>
+<div class="section" id="application-target-tracking-with-distributed-sensors">
+<h3>Application: Target tracking with distributed sensors</h3>
+<div class="section" id="description">
+<h4>description</h4>
+<p>In this problem, there are multiple probes which can freely move around in a bounded space, and a target which is unobservable for all the probes. At any time, a probe can emit pulses of sounds and get a noisy distance to the target. The noise level is in direct proportion to the distance between the probe and the target, which means the more a probe is close to the target, the more accurate results the probe can get. Each probe has limited communication range and can only share its position and observations with their neighbors. The goal of this problem is trying to locate the position of the invisible target.</p>
+</div>
+<div class="section" id="model">
+<h4>model</h4>
+<p>The basic framework is defined according to the generic model in deliverable 2. Several extended assumptions are described below:</p>
+<ul class="simple">
+<li>Each probe is a player.</li>
+<li>Probes move around in a bounded 2d euclidean plane so that the state space are the possible combinations of the positions and velocities of all the probes.</li>
+<li>The actions of a probe are represented by the vectors of acceleration.</li>
+<li>At each stage, a probe chooses an action (its current acceleration) and moves to the position at the next stage. Assume the actual moving distance equals to the theoretical moving distance plus a random variable with Gaussian distribution.</li>
+<li>At each stage, a probe can get an observation including the distance to the target and the signal strength. The observed distance equals to the actual distance plus a random variable with Gaussian distribution. The value of <span class="math">\(\sigma\)</span> is in direct proportion to the actual distance.</li>
+<li>The goal of the game is that probes try to locate the target.</li>
+</ul>
+<p>By considering the discrete time model, a stochastic game can be defined for representing this problem.</p>
+</div>
+</div>
+</div>
+<div class="section" id="schedule">
+<h2>Schedule</h2>
+<p>In this time, I added a specific application model instead of directly solving the consensus problem. Because both mechanism design problem and consensus problem can be solved more easily under concrete definitions and the questions in the discussion section of this assignment cannot be answered without an application. For the next assignment, I will illustrate the solutions for both problems and start to implement the simulation program. A demo will be available before the project demonstration.</p>
+</div>
+<div class="section" id="discussion">
+<h2>Discussion</h2>
+<p>(a)
+For each probe in the tracking problem,</p>
+<ul class="simple">
+<li>It can know the positions and velocities of its neighbors and itself.</li>
+<li>It can know the observations from its neighbors.</li>
+<li>It can estimate the consequences of its actions (the position of itself at the next stage with noise)</li>
+<li>It can estimate the distance to the target.</li>
+<li>It believes that the communications between itself and its neighbors are reliable and its neighbors cannot deceive it.</li>
+<li>It believes that the observations from its neighbors are inaccurate.</li>
+<li>It believes that it moves around in the euclidean plane.</li>
+</ul>
+<ol class="loweralpha simple" start="2">
+<li></li>
+</ol>
+<p>The knowledge of movement and the states of neighborhood is included in the framework of games. The knowledge of observations is integrated into the cost function. The neighborhood relations are defined by the distance on the euclidean plane. The uncertainty in the knowledge of movement makes the game model be a stochastic game.</p>
+<ol class="loweralpha simple" start="3">
+<li></li>
+</ol>
+<p>The uncertainty is represented by the random variable with Gaussian distribution. It works for the model, although it usually is a strong assumption in the real world.</p>
+<p>Since the knowledge of states of probes is a kinematics issues, it can be represented by the Cartesian coordinate system and classic Newton's laws. Such representation works under the assumptions of the application model, but may not work in the real world. For example, tracking a target over the surface of ocean is not a system on the euclidean plane, and finding the trace of a high-energy particle in LHC is not a system under classic Newton's laws.</p>
+</div>
+<div class="section" id="reference">
+<h2>Reference</h2>
+<p>[1] Bauso, Dario, Laura Giarré, and Raffaele Pesenti. &quot;Non-linear protocols for optimal distributed consensus in networks of dynamic agents.&quot; Systems &amp; Control Letters 55.11 (2006): 918-928.</p>
+<p>[2] Ren, Wei, Randal W. Beard, and Ella M. Atkins. &quot;A survey of consensus problems in multi-agent coordination.&quot; Proceedings of the 2005, American Control Conference, 2005.. IEEE, 2005.</p>
+<p>[3]Sarimveis, Haralambos, et al. &quot;Dynamic modeling and control of supply chain systems: A review.&quot; Computers &amp; Operations Research 35.11 (2008): 3530-3561.</p>
+</div>
+<script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://imjjs.github.io/cs6366">CS6366 Project</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://imjjs.github.io/cs6366/category/cs6366.html">cs6366 (3)</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Yi Li 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>
