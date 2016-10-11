@@ -1,4 +1,4 @@
-Model
+Deliverable 2
 ================================
 :date: 2016-9-21 6:20
 :modified: 2016-9-21 8:00
@@ -6,7 +6,7 @@ Model
 :category: cs6366
 :slug: dai2
 :authors: Yi Li
-:summary: deliverable document 2
+:summary: deliverable 2
 
 
 Basic
