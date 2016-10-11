@@ -8,7 +8,7 @@ Deliverable 3
 :authors: Yi Li
 :summary: deliverable 3
 
-**Document can be download from** https://imjjs.github.io/cs6366/d3.pdf
+**Document can be downloaded from** https://imjjs.github.io/cs6366/d3.pdf
 
 **I pledge my honor that I have neither given nor received aid on this work.**
 
@@ -50,6 +50,11 @@ By considering the discrete time model, a stochastic game can be defined for rep
 Schedule
 --------
 In this time, I added a specific application model instead of directly solving the consensus problem. Because both mechanism design problem and consensus problem can be solved more easily under concrete definitions and the questions in the discussion section of this assignment cannot be answered without an application. For the next assignment, I will illustrate the solutions for both problems and start to implement the simulation program. A demo will be available before the project demonstration.
+
+
+Changes
+-------
+Nothing is changed from the last submission.
 
 Discussion
 ----------
