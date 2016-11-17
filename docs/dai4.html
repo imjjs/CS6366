@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Deliverable 4 — CS6366 Project</title>
+	<meta name="description" content="Title: Deliverable 4; Date: 2016-11-17; Author: Yi Li">
+	<meta name="author" content="Yi Li">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="https://imjjs.github.io/cs6366/theme/html5.js"></script>
+		<![endif]-->
+	<link href="https://imjjs.github.io/cs6366/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="https://imjjs.github.io/cs6366/theme/css/local.css" rel="stylesheet">
+	<link href="https://imjjs.github.io/cs6366/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="https://imjjs.github.io/cs6366/">CS6366 Project</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Deliverable 4</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">Yi Li</h4>
+		</span>
+		<time datetime="2016-11-17T06:20:00-06:00" itemprop="datePublished">Thu 17 November 2016</time>
+	</div>
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="https://imjjs.github.io/cs6366/category/cs6366.html" rel="category">cs6366</a>
+		</span>
+	</div>
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="https://imjjs.github.io/cs6366/tag/distributed-ai.html" rel="tag">distributed AI</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p><strong>Document can be downloaded from</strong> <a class="reference external" href="https://imjjs.github.io/cs6366/d4.pdf">https://imjjs.github.io/cs6366/d4.pdf</a></p>
+<p><strong>I pledge my honor that I have neither given nor received aid on this work.</strong></p>
+<div class="section" id="id1">
+<h2>1</h2>
+<p>The items that have been achieved:</p>
+<ul class="simple">
+<li>Some bug fix and code refinements for the simulation program (the target tracking problem).</li>
+<li>Empirical verifications (in progress).</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>2</h2>
+<p>To reveal the relation between the uncertainty level and the probability that a sensor fail to reach the target (based on the experiment results), we choose following independent variables for the experiments:</p>
+<ul class="simple">
+<li>the number of sensors</li>
+<li>the commutation distance</li>
+<li>the value of sigma (in Gaussian distribution which is the representation of the uncertainty level in the model)</li>
+<li>discount factors</li>
+<li>the velocity range of sensors</li>
+<li>the connectivity of the underlying graph of the dynamic network(optional, calculating the connectivity is slow)</li>
+</ul>
+<p>For each configuration, multiple experiments with random initial state will be tested and the outcome is the ratio of the number of lost sensors to the total number of sensors.</p>
+</div>
+<div class="section" id="id3">
+<h2>3</h2>
+<p>Experiments run slowly. It will take sometime to finish all of the experiments.</p>
+</div>
+<div class="section" id="id4">
+<h2>4</h2>
+<ul class="simple">
+<li><ol class="first loweralpha">
+<li>By adding multiple targets and assuming the order of some targets, the distributed planning may be incorporated into the current problem model so that sensors should track targets following the order without centralized controls.</li>
+</ol>
+</li>
+<li><ol class="first loweralpha" start="2">
+<li>The advantage is that the model will become more flexible to describe more complicated real world problems.</li>
+</ol>
+</li>
+<li><ol class="first loweralpha" start="3">
+<li>The disadvantage is that the model will be beyond the definition of consensus problem, which means we cannot reuse the current algorithm to solve it.</li>
+</ol>
+</li>
+<li><ol class="first loweralpha" start="4">
+<li>Using a set of targets instead of using a single target and assuming there is a topology sort on the target set. Further assuming that one target is not observable when its pre-requires are not reached.</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+	<hr>
+	<h2>Comments</h2>
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://imjjs.github.io/cs6366">CS6366 Project</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Categories</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://imjjs.github.io/cs6366/category/cs6366.html">cs6366 (4)</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Yi Li 2016</p>
+			<p>Powered by Pelican</p>
+		</div>
+	</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>
